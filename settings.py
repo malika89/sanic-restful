@@ -51,3 +51,7 @@ EMAIL_PORT= config["email"]["port"]
 EMAIL_USER = config["email"]["user"]
 EMAIL_PASS = config["email"]["password"]
 ADMIN_EMAIL = config["email"]["admin_email"]
+
+# consul
+CONSUL_HOST = config["consul"]["host"]
+CONSUL_PORT = config["consul"]["port"]
