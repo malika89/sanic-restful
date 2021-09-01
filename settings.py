@@ -5,8 +5,8 @@ from common.logger import Log
 
 
 installed_apps = [
-    "apps.articles",
-    "apps.users"
+    "apps.regions",
+    "apps.zones"
 ]
 
 
