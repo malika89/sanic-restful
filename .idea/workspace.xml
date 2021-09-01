@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="70d9dd0a-965c-436a-a20e-aad39732f7c1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/articles/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/articles/router.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/articles/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/users/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/users/router.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/users/views.py" beforeDir="false" />
-    </list>
+    <list default="true" id="70d9dd0a-965c-436a-a20e-aad39732f7c1" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +11,7 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/start.py">
+        <entry file="file://$PROJECT_DIR$/../cloud_api/start.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="322">
               <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
@@ -32,7 +23,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/external/aws.py">
+        <entry file="file://$PROJECT_DIR$/../cloud_api/common/external/aws.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
               <caret line="27" selection-start-line="27" selection-end-line="27" />
@@ -45,7 +36,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apps/resouces/zones/router.py">
+        <entry file="file://$PROJECT_DIR$/../cloud_api/apps/resouces/zones/router.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
               <caret line="8" column="49" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
@@ -57,7 +48,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/apps/resouces/regions/router.py">
+        <entry file="file://$PROJECT_DIR$/../cloud_api/apps/resouces/regions/router.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
               <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
@@ -69,7 +60,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apps/resouces/regions/models.py">
+        <entry file="file://$PROJECT_DIR$/../cloud_api/apps/resouces/regions/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
               <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
@@ -81,7 +72,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apps/resouces/regions/views.py">
+        <entry file="file://$PROJECT_DIR$/../cloud_api/apps/resouces/regions/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
               <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
@@ -222,7 +213,12 @@
           <expand>
             <path>
               <item name="cloud_api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="doc_api" type="462c0819:PsiDirectoryNode" />
+              <item name="cloud_api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cloud_api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cloud_api" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -242,6 +238,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -426,7 +423,7 @@
       <updated>1629464411265</updated>
       <workItem from="1629464415419" duration="11858000" />
       <workItem from="1629982838286" duration="6326000" />
-      <workItem from="1630168188510" duration="13639000" />
+      <workItem from="1630168188510" duration="13763000" />
     </task>
     <task id="LOCAL-00001" summary="添加readme">
       <created>1629994660856</created>
@@ -449,16 +446,23 @@
       <option name="project" value="LOCAL" />
       <updated>1630513057205</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="rename_cloudapi&#10;&#10;基础cloud client">
+      <created>1630513156125</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1630513156125</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31823000" />
+    <option name="totallyTimeSpent" value="31947000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1440" height="875" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25679544" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25679544" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -469,7 +473,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32947233" />
+      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32947233" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.31660232" />
@@ -564,7 +568,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/base/pagenation.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/common/base/pagenation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="36" lean-forward="true" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
@@ -574,7 +578,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/base/blueprint.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/common/base/blueprint.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
@@ -593,7 +597,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/router.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/router.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
@@ -603,23 +607,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/template/views.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/common/template/views.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/template/routers.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/common/template/routers.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/template/models.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/common/template/models.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/libs/action.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/libs/action.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libs/encoder.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/libs/encoder.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="23" lean-forward="true" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
@@ -629,7 +633,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libs/import_export.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/libs/import_export.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
@@ -639,7 +643,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/base/execptions.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/common/base/execptions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" selection-start-line="19" selection-end-line="19" />
@@ -675,7 +679,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/logger.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/common/logger.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
@@ -685,7 +689,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libs/logrotate.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/libs/logrotate.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="29" column="42" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
@@ -695,14 +699,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libs/send_mail.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/libs/send_mail.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="61" lean-forward="true" selection-start-line="10" selection-start-column="61" selection-end-line="10" selection-end-column="61" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libs/convert.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/libs/convert.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="46" selection-start-line="46" selection-end-line="46" />
@@ -755,7 +759,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/base/base_view.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/common/base/base_view.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
@@ -765,7 +769,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="75">
@@ -782,7 +786,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/internal/sso.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/common/internal/sso.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
@@ -792,7 +796,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/base/authentications.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/common/base/authentications.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="316">
           <caret line="32" selection-start-line="32" selection-end-line="32" />
@@ -802,14 +806,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/conf.ini">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/conf.ini">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="29" selection-start-line="29" selection-end-line="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/settings.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="436">
           <caret line="56" column="36" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
@@ -819,7 +823,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libs/consul.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/libs/consul.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" selection-start-line="2" selection-end-line="2" />
@@ -850,7 +854,7 @@
     <entry file="file://$PROJECT_DIR$/apps/articles/regions.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/external/aws.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/common/external/aws.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="27" selection-start-line="27" selection-end-line="27" />
@@ -861,7 +865,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/resouces/regions/views.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/apps/resouces/regions/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
@@ -871,14 +875,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/base/base_model.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/common/base/base_model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="23" lean-forward="true" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/resouces/zones/models.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/apps/resouces/zones/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
@@ -888,7 +892,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/resouces/regions/models.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/apps/resouces/regions/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
@@ -898,7 +902,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/resouces/zones/views.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/apps/resouces/zones/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
@@ -908,14 +912,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/external/common_ecs.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/common/external/common_ecs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="16" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/start.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/start.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
           <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
@@ -925,7 +929,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/resouces/zones/router.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/apps/resouces/zones/router.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="49" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
@@ -935,7 +939,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/resouces/regions/router.py">
+    <entry file="file://$PROJECT_DIR$/../cloud_api/apps/resouces/regions/router.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
