@@ -38,8 +38,10 @@ db_config = {
         },
     "apps": {
         "models": {
-                "models": [f'{i}.models' for i in installed_apps],
-                "default_connection": "default",
+            "models": ["aerich.models",
+                       "apps.resources.regions.models",
+                       "apps.resources.zones.models"],
+            "default_connection": "default",
             }
         },
     }

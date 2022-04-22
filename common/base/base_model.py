@@ -10,11 +10,11 @@ class BaseModel(Model):
     FOREIGN_KEYS = {}
 
     id = fields.IntField(pk=True)
-    create_time = fields.DatetimeField(50,description="创建时间")
-    update_time = fields.DatetimeField(50, description="修改时间")
-    create_by = fields.CharField(50, null=False, default="", description="创建人")
-    update_by = fields.CharField(50, null=False, default="", description="修改人")
-    is_deleted = fields.BooleanField(default=False, description="是否被删除")
+    create_time = fields.DatetimeField(50,description="create_time")
+    update_time = fields.DatetimeField(50, description="update_time")
+    create_by = fields.CharField(50, null=False, default="", description="create_user")
+    update_by = fields.CharField(50, null=False, default="", description="update_user")
+    is_deleted = fields.BooleanField(default=False, description="in_use")
 
     class Meta:
         abstract = True

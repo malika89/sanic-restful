@@ -16,7 +16,7 @@ from settings import *
 RED_COLOR = '<strong><font color="#FF0000">{}</font></strong><br>'
 BLUE_COLOR = '<strong><font color="#0000FF">{}</font></strong><br>'
 
-msghead = "平台自动发送，请勿回复!"
+msghead = "Automatic notification, do not reply!"
 
 
 class SendMail(object):
@@ -138,38 +138,13 @@ def alert_head(username):
     return alertinfo
 
 
-def domain_alert(
-        username, subject='域名系统通知',
-        to=" ", cc='',
-        message='', is_alert=True, filepath=None, text='plain', html_escape=True):
-    try:
-        # 通知邮件体
-        if is_alert:
-            messagebody = alert_head(username)
-        else:
-            messagebody = '{}</br></br>'.format(msghead)
-        if message and isinstance(message, list):
-            for msg in message:
-                if isinstance(msg, dict or list):
-                    messagebody += str(json2html.convert(json=msg, escape=html_escape))
-                else:
-                    messagebody += str(message)
-        if message and isinstance(message, dict):
-            messagebody += str(json2html.convert(json=message, escape=html_escape))
-        elif message and isinstance(message, str):
-            messagebody += str(message)
-        smtp.conn_email(
-            to=to, cc=cc,
-            subject=subject, contents=messagebody, text=text,
-            filepath=filepath if isinstance(filepath, list) else None,
-        )
-        logger.info("发送告警邮件成功: {}".format(subject))
-    except Exception as e:
-        err = e.__str__()
-
-def send_expire_email(title, content, receivers, file=None):
+def send_email(title, content, receivers, file=None):
     """
-    发送证书过期邮件
+    send content and title within a mail to receivers
+      @title params: email titile->string
+      @content params: email content->string
+      @receivers params: email list who will receive the mail->list
+      @file params: the file_path->string
     """
     sender = ''
     content_head = str(content).replace('\r\n', ' ')[0:30]
@@ -183,7 +158,7 @@ def send_expire_email(title, content, receivers, file=None):
 
     content = content + "\r\n"
     content = content + "\r\n----------------------------------------------."
-    content = content + "\r\n域名系统自动发送邮件，请勿回复."
+    content = content + "\r\n %s." % msghead
     content = content + "\r\n环境: %s." % CURRENT_ENV
     content = content + "\r\n----------------------------------------------."
 
@@ -198,7 +173,6 @@ def send_expire_email(title, content, receivers, file=None):
             message['To'] = Header(receivers, 'utf-8')
             receivers_new = receivers
         else:
-            # list 去重复邮件地址
             receivers_new = list()
             for r in receivers:
                 if r not in receivers_new:
@@ -212,7 +186,7 @@ def send_expire_email(title, content, receivers, file=None):
             msg_attachment.add_header("Content-Disposition", "attachment", filename=filename)
             message.attach(msg_attachment)
         # sendmail
-        smtp.conn_email('', "域名系统证书过期", message.as_string(), sender, receivers_new)
+        smtp.conn_email('',title, message.as_string(), sender, receivers_new)
         logger.info('title: %r, mail: %r, send succeed' % (title, receivers_new))
     except Exception as e:
         logger.error('title: %s, mail: %r, Exception: %s' % (title, receivers, e))
@@ -221,28 +195,28 @@ def send_expire_email(title, content, receivers, file=None):
 
 
 def send_email_excel(table, head_dic, title, content, receivers, basefilename):
-    """发送带excel附件的邮件"""
+    """sending email with excel file attached"""
     filename = '/tmp/%s.xls' % basefilename
     # 保存 excel
     xls = XlsLoader()
     xls.skip_default = False
     xls.load(table=table, dic=head_dic, filename=filename)
     logger('save %s' % filename)
-    send_expire_email(title, content, receivers, file=filename)
+    send_email(title, content, receivers, file=filename)
 
 
 class XlsLoader(object):
-    """从数据表结构体导入数据"""
+    """load data form a xls file"""
     stringio = None
-    skip_fields = None # 需要过滤的字段
-    skip_default = True # 是否默认过滤不在‘列名’里面的字段
-    dic = None  # 列名
+    skip_fields = None # fields to be skipped->list
+    skip_default = True # Whether to filter fields not in 'column name' by default
+    dic = None  # columns names->dict
 
     def load(self, table, dic, filename=None):
         """
-        :param table: 需要保存数据的list对象
-        :param dic: 字典key转义列头名称
-        :param filename: 需要保存的文件名 (.xls) 如果空，则保存到stringio
+        :param table: The list object that needs to save the data
+        :param dic: columns names->dict
+        :param filename: filename to save (.xls) if empty, save to stringio
         :return:
         """
         from datetime import date
@@ -256,7 +230,7 @@ class XlsLoader(object):
             style = xlwt.XFStyle()
             style.font = font
             if len(table) <= 0:
-                return self.failure(msg='无效的数据', detail="failure: table len<=0, %s" % self.__class__.__name__)
+                return self.failure(msg='invalid data', detail="failure: table len<=0, %s" % self.__class__.__name__)
             # 写入列名
             col = 0
             for key in table[0].keys():
@@ -275,9 +249,9 @@ class XlsLoader(object):
                         continue
                     v = table[row][key]
                     if isinstance(v, datetime):
-                        v = v.strftime('%Y-%m-%d %H:%M:%S') # 转换时间字符串
+                        v = v.strftime('%Y-%m-%d %H:%M:%S')
                     elif isinstance(v, date):
-                        v = str(v) # 转换时间字符串
+                        v = str(v)
                     elif v is None:
                         v = '--'
                     else:
@@ -285,15 +259,16 @@ class XlsLoader(object):
                     # logd(v)
                     sheet.write(row + 1, col, v)
                     col = col + 1
-            if filename is not None: # 保存文件
+            if filename is not None:
                 wb.save(filename)
-            else: # 保存到 io, 用于无文件流式下载
+            else:
+                # Save to io for fileless streaming downloads
                 wb.save(self.stringio)
                 self.stringio.seek(0)
             # logi(self.stringio.getvalue())
         except Exception as e:
             logger.info('Exception: ' + str(e), self.__class__.__name__)
-            return self.failure(msg='无效的数据', detail=e)
+            return self.failure(msg='invalid data', detail=e)
         return True
 
     def _file_streaming(self, chunk_size=512):

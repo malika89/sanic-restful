@@ -4,6 +4,9 @@
 
 """
 blueprint 添加自动详情功能以及支持action动作
+ :using blueprint to add common route automatically，eg: detail
+ :with action decorator support custom method func
+
 """
 from typing import Iterable
 

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-model 和数据转换
-数据之间类型转换
+convert libs, the method includes:
+   + model and data transformation
+   + data type conversion
 
 """
 
@@ -17,7 +18,7 @@ TIME_FORMAT_YMD_DASH_DATETIME = '%Y-%m-%d %H:%M:%S'
 
 
 def is_empty(value):
-    """判断数据是否空"""
+    """check if value is empty"""
     if value is None:
         return True
     if value == '':
@@ -36,7 +37,7 @@ def check_local_dir(local_path):
 
 def char_has_special_char(desstr, restr=''):
     import re
-    # 过滤除中英文及数字以外的其他字符
+    # Filter other characters except Chinese, English and numbers
     res = re.compile("[^\u4e00-\u9fa5^a-z^A-Z^0-9]")
     s = res.sub(restr, desstr)
     if s != desstr:
@@ -191,7 +192,7 @@ def model_to_dict(instance, fields=None, exclude=None):
 
 def time_function(func):
     """
-    作为装饰器使用，返回函数执行需要花费的时间
+    Used as a decorator, returns the time it takes for the function to execute
     :param func:
     :return:
     """
@@ -200,7 +201,7 @@ def time_function(func):
         start = time.time()
         result = func(*args, **kwargs)
         end = time.time()
-        print(f'程序{func.__name__} 用时： {end-start}')
+        print(f'the func run with time :{func.__name__} ： {end-start}')
         return result
     return wrapper
 
@@ -208,9 +209,9 @@ def time_function(func):
 def getIndex(lst, val, whichKey=None):
     """
 
-    :param lst: 字典list
-    :param val: 查询的value值
-    :param whichKey: 显示字典数据的关键字key,
+    :param lst: dict list ,eg [{"key":"val"}]
+    :param val: dict value to be searched
+    :param whichKey: dict key to be showned,
     :return: 返回(index,dict)
     """
     l = []
@@ -222,6 +223,7 @@ def getIndex(lst, val, whichKey=None):
 
 def get_columns(instance, exclude=[]):
     """
+    get the model fields and description ,using as column for record data to  export/import to a file
     获取model 字段和中文名字典，用于导入导出
     :param instance:
     :param exclude:

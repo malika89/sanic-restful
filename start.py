@@ -13,7 +13,6 @@ app = Sanic(__name__)
 app.update_config(config)
 app.blueprint(api)
 
-# 注册orm
 register_tortoise(app, config=db_config, generate_schemas=True)
 
 @app.listener('before_server_start')
@@ -45,7 +44,7 @@ def register_consul():
 
     check = consul.Check().tcp(CONSUL_HOST,CONSUL_PORT, "5s", "30s", "30s")
     res=consul_client.GetService(__name__)
-    Log.info(f'consul注册结果，{res}')
+    Log.info(f'consul connect STATUS，{res}')
 
 
 if __name__ == '__main__':

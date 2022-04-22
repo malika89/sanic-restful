@@ -1,5 +1,11 @@
-## 基本功能
-
-### drf风格-路由转发、自定义方法
-### 异步orm-tortoise
-### 基本方法curd
+## basic function
+ + async web using sanic framework
+ + restful router  with custom action decorator support
+ + intergrated with async orm(orm-tortoise) managed by aerich tool
+ + quick curd 
+ 
+## to-do
+ + rpc func 
+ + debugger with profile/tracing
+ + unit-test case
+ + DDD-design

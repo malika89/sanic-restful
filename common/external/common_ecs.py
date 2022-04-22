@@ -1,7 +1,10 @@
 #!/usr/bin/python
 
 """
-基类资源操作
+云厂商 通用sdk 客户端,用于资源管理。各厂商认证方式或者私有方法可在各sdk 单独便携
+  :Cloud vendor general-purpose sdk client for resource management.
+  ：The authentication method or private method of each manufacturer can be carried separately in each sdk
+
 """
 class ClientBase:
     def __init__(self,access_key,secret_key,region=""):
@@ -20,7 +23,7 @@ class ClientBase:
 
 class CommonRequest():
     # endpoint 为资源操作入口，transfer为数据转换器
-    # example {"endpoint":"describe_instance","source":"a.c.d","map":{"Region":"region","Network":"resouces"}}
+    # example {"endpoint":"describe_instance","source":"a.c.d","map":{"Region":"region","Network":"resources"}}
     list_endpoint = {"endpoint": "", "source":""}
     create_endpoint = {"endpoint": ""}
     update_endpoint= ""

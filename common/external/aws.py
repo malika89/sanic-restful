@@ -1,5 +1,10 @@
 #!/usr/bin/python
 
+"""
+aws sdk客户端用于资源管理，此文件定义私有方法和初始化认证。其他func继承于common_ecs.py client
+  :aws sdk client for resource management with boto3,func include: init ,private func
+  :inherited from common_ecs.py client
+"""
 import boto3
 
 from common.external.common_ecs import *

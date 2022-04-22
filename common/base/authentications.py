@@ -13,7 +13,7 @@ class SSOAuthentication(Auth):
     def authenticate(self, request):
         token = request.headers.get("sso_token")
         if not token:
-            raise exceptions.AuthenticationFailed('请先登入')
+            raise exceptions.AuthenticationFailed('please login in first')
 
         token = request.COOKIES.get('sso_token')
 
@@ -26,7 +26,7 @@ class SSOAuthentication(Auth):
         }
         result = api.auth(**data)
         if not result.OK:
-            raise exceptions.AuthenticationFailed('SSO程序或网路异常')
+            raise exceptions.AuthenticationFailed('auth failed')
 
         if result.data.get('code') != 200:
             raise exceptions.AuthenticationFailed(result.data.get('message'))

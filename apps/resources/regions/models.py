@@ -7,7 +7,7 @@ from tortoise import fields
 
 
 class Region(BaseModel):
-    name = fields.CharField(100, null=False, default="", description=" 区域名称")
+    name = fields.CharField(100, null=False, default="", description=" region name")
 
     class Meta:
         table = "regions"
