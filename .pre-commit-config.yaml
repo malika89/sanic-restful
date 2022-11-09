@@ -1,4 +1,4 @@
-https://github.com/malika89/sanic-restfulci:
+ci:
   autofix_prs: false
 
 repos:
@@ -13,7 +13,6 @@ repos:
       - id: check-json
       - id: check-toml
       - id: check-yaml
-        exclude: ^cloudformation/
       - id: pretty-format-json
         args: [--autofix, --no-ensure-ascii, --no-sort-keys]
       - id: check-ast
@@ -25,24 +24,30 @@ repos:
     hooks:
       - id: yesqa
 
+  - repo: https://github.com/PyCQA/autoflake
+    rev: v1.6.1
+    hooks:
+    -   id: autoflake
+        args: ['--in-place', '--remove-all-unused-imports']
+
   - repo: https://github.com/asottile/pyupgrade
     rev: v2.38.2
     hooks:
       - id: pyupgrade
-        args: [ --py310-plus ]
+        args: [--py310-plus]
         exclude: ^(install|get)-poetry.py$
-
-  - repo: https://github.com/psf/black
-    rev: 22.8.0
-    hooks:
-      - id: black
-        args: [ --line-length=79 ]
 
   - repo: https://github.com/pycqa/isort
     rev: 5.6.4
     hooks:
       - id: isort
-        args: [ "--profile", "black", --line-length=79 ]
+        args: ["--profile", "black", "--filter-files"]
+
+  - repo: https://github.com/psf/black
+    rev: 22.8.0
+    hooks:
+      - id: black
+        args: [--line-length=79]
 
   - repo: https://github.com/pycqa/flake8
     rev: 5.0.4
@@ -53,4 +58,3 @@ repos:
     rev: v2.20.0
     hooks:
       - id: validate_manifest
-

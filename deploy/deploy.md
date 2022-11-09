@@ -1,8 +1,8 @@
 ## dependency
  + python 3.7
- + mysql 
+ + mysql
  + consul
- 
+
 ## deployment
 ### step 1: install requirements
 ``pip install -r requirments.txt``
@@ -15,7 +15,7 @@ aerich init-db
 ```
 
 ### step3: run app
-``sh deploy/start.sh 
+``sh deploy/start.sh
 or
 python start.py
 ``
@@ -29,4 +29,3 @@ modify settings.py with installed_apps、db_config to add new app_name/model_nam
 modify router if needed
 add new models/router/views (reference from common/base template)
 ```
-

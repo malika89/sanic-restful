@@ -5,71 +5,75 @@
 import inspect
 
 
-
 def get_extra_actions(cls):
     """
-        Get the methods that are marked as an extra ViewSet `@action`.
+    Get the methods that are marked as an extra ViewSet `@action`.
     """
-    return [_check_attr_name(method, name) for name, method in inspect.getmembers(cls, _is_extra_action)]
+    return [
+        _check_attr_name(method, name)
+        for name, method in inspect.getmembers(cls, _is_extra_action)
+    ]
 
 
 def action(methods=None, detail=None, url_path=None, url_name=None, **kwargs):
     """
     reference django actions
     """
-    methods = ['get'] if (methods is None) else methods
+    methods = ["get"] if (methods is None) else methods
     methods = [method.lower() for method in methods]
 
-    assert detail is not None, (
-        "@action() missing required argument: 'detail'"
-    )
+    assert detail is not None, "@action() missing required argument: 'detail'"
 
     # name and suffix are mutually exclusive
-    if 'name' in kwargs and 'suffix' in kwargs:
-        raise TypeError("`name` and `suffix` are mutually exclusive arguments.")
+    if "name" in kwargs and "suffix" in kwargs:
+        raise TypeError(
+            "`name` and `suffix` are mutually exclusive arguments."
+        )
 
     def decorator(func):
         func.mapping = MethodMapper(func, methods)
 
         func.detail = detail
         func.url_path = url_path if url_path else func.__name__
-        func.url_name = url_name if url_name else func.__name__.replace('_', '-')
+        func.url_name = (
+            url_name if url_name else func.__name__.replace("_", "-")
+        )
 
         func.kwargs = kwargs
 
         # Set descriptive arguments for viewsets
-        if 'name' not in kwargs and 'suffix' not in kwargs:
-            func.kwargs['name'] = pretty_name(func.__name__)
-        func.kwargs['description'] = func.__doc__ or None
+        if "name" not in kwargs and "suffix" not in kwargs:
+            func.kwargs["name"] = pretty_name(func.__name__)
+        func.kwargs["description"] = func.__doc__ or None
 
         return func
+
     return decorator
 
 
 def _is_extra_action(attr):
-    return hasattr(attr, 'mapping') and isinstance(attr.mapping, MethodMapper)
+    return hasattr(attr, "mapping") and isinstance(attr.mapping, MethodMapper)
 
 
 def is_custom_action(action):
-    return action not in {
-        'retrieve', 'list', 'post', 'put', 'patch', 'delete'
-    }
+    return action not in {"retrieve", "list", "post", "put", "patch", "delete"}
 
 
 def _check_attr_name(func, name):
     assert func.__name__ == name, (
-        'Expected function (`{func.__name__}`) to match its attribute name '
-        '(`{name}`). If using a decorator, ensure the inner function is '
-        'decorated with `functools.wraps`, or that `{func.__name__}.__name__` '
-        'is otherwise set to `{name}`.').format(func=func, name=name)
+        "Expected function (`{func.__name__}`) to match its attribute name "
+        "(`{name}`). If using a decorator, ensure the inner function is "
+        "decorated with `functools.wraps`, or that `{func.__name__}.__name__` "
+        "is otherwise set to `{name}`."
+    ).format(func=func, name=name)
     return func
 
 
 def pretty_name(name):
     """Convert 'first_name' to 'First name'."""
     if not name:
-        return ''
-    return name.replace('_', ' ').capitalize()
+        return ""
+    return name.replace("_", " ").capitalize()
 
 
 class MethodMapper(dict):
@@ -96,36 +100,40 @@ class MethodMapper(dict):
             self[method] = self.action.__name__
 
     def _map(self, method, func):
-        assert method not in self, (
-            "Method '%s' has already been mapped to '.%s'." % (method, self[method]))
+        assert (
+            method not in self
+        ), "Method '{}' has already been mapped to '.{}'.".format(
+            method, self[method]
+        )
         assert func.__name__ != self.action.__name__, (
             "Method mapping does not behave like the property decorator. You "
-            "cannot use the same method name for each mapping declaration.")
+            "cannot use the same method name for each mapping declaration."
+        )
 
         self[method] = func.__name__
 
         return func
 
     def get(self, func):
-        return self._map('get', func)
+        return self._map("get", func)
 
     def post(self, func):
-        return self._map('post', func)
+        return self._map("post", func)
 
     def put(self, func):
-        return self._map('put', func)
+        return self._map("put", func)
 
     def patch(self, func):
-        return self._map('patch', func)
+        return self._map("patch", func)
 
     def delete(self, func):
-        return self._map('delete', func)
+        return self._map("delete", func)
 
     def head(self, func):
-        return self._map('head', func)
+        return self._map("head", func)
 
     def options(self, func):
-        return self._map('options', func)
+        return self._map("options", func)
 
     def trace(self, func):
-        return self._map('trace', func)
+        return self._map("trace", func)

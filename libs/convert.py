@@ -8,22 +8,30 @@ convert libs, the method includes:
 
 import os
 import time
-from datetime import date,datetime
-from tortoise.models import ForeignKey, ManyToManyField, DateTimeField, DateField, SmallIntegerField, QuerySet,DecimalField
-from itertools import chain
+from datetime import date, datetime
 from functools import wraps
+from itertools import chain
 
+from tortoise.models import (
+    DateField,
+    DateTimeField,
+    DecimalField,
+    ForeignKey,
+    ManyToManyField,
+    QuerySet,
+    SmallIntegerField,
+)
 
-TIME_FORMAT_YMD_DASH_DATETIME = '%Y-%m-%d %H:%M:%S'
+TIME_FORMAT_YMD_DASH_DATETIME = "%Y-%m-%d %H:%M:%S"
 
 
 def is_empty(value):
     """check if value is empty"""
     if value is None:
         return True
-    if value == '':
+    if value == "":
         return True
-    if str(value).strip() == '':
+    if str(value).strip() == "":
         return True
     return False
 
@@ -35,8 +43,10 @@ def check_local_dir(local_path):
     except:
         return False
 
-def char_has_special_char(desstr, restr=''):
+
+def char_has_special_char(desstr, restr=""):
     import re
+
     # Filter other characters except Chinese, English and numbers
     res = re.compile("[^\u4e00-\u9fa5^a-z^A-Z^0-9]")
     s = res.sub(restr, desstr)
@@ -49,7 +59,7 @@ def char_has_special_char(desstr, restr=''):
 def char_has_chinese(text):
     # for python 3.x
     # sample: char_has_chinese('一') == True, char_has_chinese('我&&你') == True
-    return any('\u4e00' <= char <= '\u9fff' for char in text)
+    return any("\u4e00" <= char <= "\u9fff" for char in text)
 
 
 def date_time(format_type=TIME_FORMAT_YMD_DASH_DATETIME):
@@ -65,29 +75,33 @@ def datetime_to_str(timeobj):
     if isinstance(timeobj, datetime):
         return timeobj.strftime(TIME_FORMAT_YMD_DASH_DATETIME)
     elif isinstance(timeobj, date):
-        return timeobj.strftime('%Y-%m-%d')
+        return timeobj.strftime("%Y-%m-%d")
     else:
         return str(timeobj)
 
 
-def today_date(format_type='%Y-%m-%d'):
+def today_date(format_type="%Y-%m-%d"):
     today = time.strftime(format_type)
     return today
 
 
-def model_to_str(instance, fields=None, exclude=None, has_address=False, hans=False):
-    '''
+def model_to_str(
+    instance, fields=None, exclude=None, has_address=False, hans=False
+):
+    """
     :param instance:
     :param fields:
     :param exclude:
     :param has_address:
     :return:
-    '''
+    """
     opts = instance._meta
     data = {}
     DATE_TIME_FIELDS = (DateTimeField, DateField)
-    for f in chain(opts.concrete_fields, opts.private_fields, opts.many_to_many):
-        if not getattr(f, 'editable', False):
+    for f in chain(
+        opts.concrete_fields, opts.private_fields, opts.many_to_many
+    ):
+        if not getattr(f, "editable", False):
             continue
         fname = f.verbose_name if hans else f.name
         if fields and f.name not in fields:
@@ -99,14 +113,16 @@ def model_to_str(instance, fields=None, exclude=None, has_address=False, hans=Fa
             if instance.pk is None:
                 data[fname] = []
             else:
-                data[fname] = list({'id': o.id, 'name': o.__str__()} for o in value_object)
+                data[fname] = list(
+                    {"id": o.id, "name": o.__str__()} for o in value_object
+                )
         elif isinstance(f, ForeignKey):
             if instance.pk is None:
                 data[fname] = []
             else:
                 try:
                     fvalue = getattr(instance, f.name)
-                    data[fname] = fvalue.__str__() if fvalue else ''
+                    data[fname] = fvalue.__str__() if fvalue else ""
                 except Exception as e:
                     data[fname] = "数据不存在"
         elif isinstance(f, SmallIntegerField):
@@ -125,19 +141,20 @@ def model_to_str(instance, fields=None, exclude=None, has_address=False, hans=Fa
 
         elif isinstance(value_object, QuerySet):
             data[fname] = [
-                model_to_str(obj,exclude=['create_time', 'update_time']) for
-                obj in value_object]
+                model_to_str(obj, exclude=["create_time", "update_time"])
+                for obj in value_object
+            ]
         else:
             data[fname] = value_object
     return data
 
 
 def fields_verbosename_map(obj, exclude=None):
-    '''
+    """
     :param obj: Models
     :param exclude: fields name of Models
     :return:
-    '''
+    """
     fields = {}
     for field in obj._meta.fields:
         if exclude and field.name in exclude:
@@ -149,8 +166,10 @@ def fields_verbosename_map(obj, exclude=None):
 def model_to_dict(instance, fields=None, exclude=None):
     opts = instance._meta
     data = {}
-    for f in chain(opts.concrete_fields, opts.private_fields, opts.many_to_many):
-        if not getattr(f, 'editable', False):
+    for f in chain(
+        opts.concrete_fields, opts.private_fields, opts.many_to_many
+    ):
+        if not getattr(f, "editable", False):
             continue
         if fields and f.name not in fields:
             continue
@@ -161,17 +180,21 @@ def model_to_dict(instance, fields=None, exclude=None):
             if instance.pk is None:
                 data[f.name] = []
             else:
-                data[f.name] = list({'id': o.id, 'name': o.__str__()} for o in value_object)
+                data[f.name] = list(
+                    {"id": o.id, "name": o.__str__()} for o in value_object
+                )
         elif isinstance(f, ForeignKey):
             if instance.pk is None:
                 data[f.name] = []
             else:
                 try:
-                    data[f.name + '_id'] = instance.id
-                    data[f.name + '__obj_name'] = getattr(instance,f.name).__str__()
+                    data[f.name + "_id"] = instance.id
+                    data[f.name + "__obj_name"] = getattr(
+                        instance, f.name
+                    ).__str__()
                 except Exception as e:
-                    data[f.name + '_id'] = instance.id
-                    data[f.name+ '__obj_name'] = "Object not exist"
+                    data[f.name + "_id"] = instance.id
+                    data[f.name + "__obj_name"] = "Object not exist"
         elif isinstance(f, DecimalField):
             if value_object is not None:
                 data[f.name] = str(value_object)
@@ -184,7 +207,9 @@ def model_to_dict(instance, fields=None, exclude=None):
                 data[f.name] = None
         elif isinstance(value_object, QuerySet):
             data[f.name] = [
-                model_to_dict(obj, exclude=['create_time', 'update_time']) for obj in value_object]
+                model_to_dict(obj, exclude=["create_time", "update_time"])
+                for obj in value_object
+            ]
         else:
             data[f.name] = value_object
     return data
@@ -196,13 +221,15 @@ def time_function(func):
     :param func:
     :return:
     """
+
     @wraps(func)
     def wrapper(*args, **kwargs):
         start = time.time()
         result = func(*args, **kwargs)
         end = time.time()
-        print(f'the func run with time :{func.__name__} ： {end-start}')
+        print(f"the func run with time :{func.__name__} ： {end-start}")
         return result
+
     return wrapper
 
 
@@ -235,4 +262,3 @@ def get_columns(instance, exclude=[]):
             continue
         fields[field.name] = field.verbose_name
     return fields
-

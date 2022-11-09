@@ -8,7 +8,7 @@ import shutil
 from datetime import datetime, timedelta
 
 
-def logrotate(target, interval=timedelta(days=1), time_format='%Y%m%d'):
+def logrotate(target, interval=timedelta(days=1), time_format="%Y%m%d"):
     """
     日志切割
     :param target(str): target folder or log file name
@@ -17,21 +17,21 @@ def logrotate(target, interval=timedelta(days=1), time_format='%Y%m%d'):
     :return: None
     """
     if os.path.isfile(target):
-        path = ''
+        path = ""
         files = [target]
     else:
-        path = target if target[-1] == '/' else target + '/'
+        path = target if target[-1] == "/" else target + "/"
         files = os.listdir(target)
 
     for f in files:
-        segment = f.split('.')
-        if len(segment) != 2 or segment[-1] != 'log':
+        segment = f.split(".")
+        if len(segment) != 2 or segment[-1] != "log":
             continue
         flag = (datetime.now() - interval).strftime(time_format)
         src = path + f
-        dst = path + '{}.{}.{}'.format(segment[0], flag, segment[1])
+        dst = path + f"{segment[0]}.{flag}.{segment[1]}"
         if os.path.exists(dst):
             continue
         shutil.copyfile(src, dst)
-        with open(src, 'w') as f:
+        with open(src, "w") as f:
             pass

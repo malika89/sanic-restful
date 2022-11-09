@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "app"
-version = "1.0.4"
+version = "1.0.4+0.9bca24f"
 description = ""
 authors = [""]
 readme = "README.md"
@@ -95,10 +95,18 @@ scrapydweb = "^1.4.0"
 enable = true
 vcs = "git"
 pattern  = "^v(?P<base>\\d+\\.\\d+\\.\\d+)$"
-format = "{base}+{distance}.{commit}"
-style="semver"
+format-jinja = """
+    {%- if distance == 0 -%}
+        {{ serialize_semver(base) }}
+    {%- elif revision is not none -%}
+        {{ serialize_semver(base,[revision], metadata=[commit]) }}
+    {%- else -%}
+        {{ serialize_semver(bump_version(base), metadata=[commit]) }}
+    {%- endif -%}
+"""
 bump = true
-strict=false
+tag-branch="dev"
+
 
 [build-system]
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
@@ -107,4 +115,3 @@ build-backend = "poetry_dynamic_versioning.backend"
 [tool.poetry.scripts]
 dev = "app.dev:start"
 shell = "app.cli:shell"
-
