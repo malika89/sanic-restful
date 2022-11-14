@@ -268,7 +268,7 @@ class BaseView(HTTPMethodView):
 
     def get_serializer(self, *args, **kwargs):
         """
-        Return the serializer instance that should be used for validating and
+        Return the serializer instances that should be used for validating and
         deserializing input, and for serializing output.
         """
         serializer_class = self.get_serializer_class()
@@ -321,7 +321,7 @@ class BaseView(HTTPMethodView):
     @property
     def paginator(self):
         """
-        The paginator instance associated with the view, or `None`.
+        The paginator instances associated with the view, or `None`.
         """
         if not hasattr(self, '_paginator'):
             if self.pagination_class is None:

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-日志分割
+lograte the log with custom interval
 """
 
 import os
@@ -11,9 +11,9 @@ from datetime import datetime, timedelta
 def logrotate(target, interval=timedelta(days=1), time_format='%Y%m%d'):
     """
     日志切割
-    :param target(str): 目标文件夹or日志
-    :param interval(timedelta): 切割间隔
-    :param time_format(str): 文件名日期格式
+    :param target(str): target folder or log file name
+    :param interval(timedelta): time interval of how often the file to be cut
+    :param time_format(str): the time format to be used as part of the cutted file name
     :return: None
     """
     if os.path.isfile(target):

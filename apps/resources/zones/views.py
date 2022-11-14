@@ -3,13 +3,13 @@
 
 from sanic import response
 from common.base.base_view import BaseView,action
-from .models import Users
+from .models import Zones
 
 
-class UserViewset(BaseView):
-    Model = Users
+class ZoneViewset(BaseView):
+    Model = Zones
     search_fields = ["name"]
 
     @action(methods=["get","post"],detail=False)
     async def online(self,request,*args,**kwargs):
-        return response.json({"code":200,"message":"users online"})
+        return response.json({"code":200,"message":"zones online"})

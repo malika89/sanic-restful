@@ -1,12 +1,11 @@
 #!/usr/bin/python
 
-# action 函数，用于支持自定义方法
+# action 函数，用于支持自定义方法(action decorator for custom func/route)
 
 import inspect
 
 
 
-# 获取viewset里面的自定义函数
 def get_extra_actions(cls):
     """
         Get the methods that are marked as an extra ViewSet `@action`.
@@ -47,7 +46,6 @@ def action(methods=None, detail=None, url_path=None, url_name=None, **kwargs):
     return decorator
 
 
-# @action函数为自定义函数
 def _is_extra_action(attr):
     return hasattr(attr, 'mapping') and isinstance(attr.mapping, MethodMapper)
 

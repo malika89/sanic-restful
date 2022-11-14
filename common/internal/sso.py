@@ -1,8 +1,14 @@
 #!/usr/bin/env python
 
 
+"""
+authentication func ,here can be replaced by api gateway
+
+suggection solution:pycasbin
+"""
+
+
 import sys
-import requests
 
 sys.path.append('../../')
 

@@ -5,8 +5,8 @@ from common.logger import Log
 
 
 installed_apps = [
-    "apps.articles",
-    "apps.users"
+    "apps.regions",
+    "apps.zones"
 ]
 
 
@@ -38,8 +38,10 @@ db_config = {
         },
     "apps": {
         "models": {
-                "models": [f'{i}.models' for i in installed_apps],
-                "default_connection": "default",
+            "models": ["aerich.models",
+                       "apps.resources.regions.models",
+                       "apps.resources.zones.models"],
+            "default_connection": "default",
             }
         },
     }
@@ -51,3 +53,7 @@ EMAIL_PORT= config["email"]["port"]
 EMAIL_USER = config["email"]["user"]
 EMAIL_PASS = config["email"]["password"]
 ADMIN_EMAIL = config["email"]["admin_email"]
+
+# consul
+CONSUL_HOST = config["consul"]["host"]
+CONSUL_PORT = config["consul"]["port"]
